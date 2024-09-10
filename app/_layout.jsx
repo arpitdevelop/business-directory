@@ -23,9 +23,9 @@ const tokenCache = {
 
 export default function RootLayout() {
   useFonts({
-    "primaryFont-regular": require("./../assets/fonts/SUSE-Regular.ttf"),
-    "primaryFont-medium": require("./../assets/fonts/SUSE-Medium.ttf"),
-    "primaryFont-bold": require("./../assets/fonts/SUSE-Bold.ttf"),
+    "primaryFont-regular": require("./../assets/fonts/Outfit-Regular.ttf"),
+    "primaryFont-medium": require("./../assets/fonts/Outfit-Medium.ttf"),
+    "primaryFont-bold": require("./../assets/fonts/Outfit-Bold.ttf"),
   });
   return (
     <ClerkProvider

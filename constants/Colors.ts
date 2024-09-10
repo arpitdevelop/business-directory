@@ -8,6 +8,7 @@ const tintColorDark = '#fff';
 
 // Custom Color Added
 const primary = '#7F57F1'
+const iconBG = "#ece5fe"
 
 export const Colors = {
   light: {
@@ -30,4 +31,5 @@ export const Colors = {
   // Custom Color Added
   PRIMARY: '#7F57F1',
   GRAY: '#808080',
+  ICON_BG: '#ece5fe'
 };
