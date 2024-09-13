@@ -33,7 +33,7 @@ export default function BusinessListByCategory() {
 
     querySnapshot.forEach((doc)=>{
       console.log(doc.data())
-      setBusinessList((prev)=>[...prev, doc.data()])
+      setBusinessList((prev)=>[...prev, {id:doc?.id, ...doc.data()}])
     })
     setLoading(false)
   }
