@@ -6,7 +6,7 @@ import { db } from "../../configs/FirebaseConfig";
 import CategoryItem from "./CategoryItem";
 import { useRouter } from "expo-router";
 
-export default function Category() {
+export default function Category({ explore = false, onCategorySelect }) {
   const [categoryList, setCategoryList] = useState([]);
   const router = useRouter();
 
@@ -25,36 +25,46 @@ export default function Category() {
     });
   };
 
+  const onCategoryPressHandler = (category) => {
+    if (!explore) {
+      router.push("/businesslist/" + category.name);
+    } else {
+      onCategorySelect(category.name);
+    }
+  };
+
   return (
     <View>
       {/* Heading */}
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          padding: 20,
-          justifyContent: "space-between",
-          marginTop: 10,
-        }}
-      >
-        <Text
+      {!explore && (
+        <View
           style={{
-            fontFamily: "primaryFont-bold",
-            fontSize: 20,
+            display: "flex",
+            flexDirection: "row",
+            padding: 20,
+            justifyContent: "space-between",
+            marginTop: 10,
           }}
         >
-          Categories
-        </Text>
-        <Text
-          style={{
-            fontFamily: "primaryFont-regular",
-            fontSize: 15,
-            color: Colors.PRIMARY,
-          }}
-        >
-          View All
-        </Text>
-      </View>
+          <Text
+            style={{
+              fontFamily: "primaryFont-bold",
+              fontSize: 20,
+            }}
+          >
+            Categories
+          </Text>
+          <Text
+            style={{
+              fontFamily: "primaryFont-regular",
+              fontSize: 15,
+              color: Colors.PRIMARY,
+            }}
+          >
+            View All
+          </Text>
+        </View>
+      )}
 
       {/* Category slider */}
       <FlatList
@@ -68,9 +78,7 @@ export default function Category() {
           <CategoryItem
             category={item}
             key={index}
-            onCategoryPress={(category) =>
-              router.push("/businesslist/" + item.name)
-            }
+            onCategoryPress={(category) => onCategoryPressHandler(category)}
           />
         )}
       />

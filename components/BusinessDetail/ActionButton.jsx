@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Image,
   Linking,
+  Share,
 } from "react-native";
 import React from "react";
 
@@ -39,6 +40,13 @@ export default function ActionButton({ business }) {
 
   const OnPressHandle = (item) => {
     if (item.name == "Share") {
+      Share.share({
+        message:
+          business?.name +
+          "\nAddress: " +
+          business?.address +
+          "\nCheck out this business on Business Directory!",
+      });
       return;
     }
     Linking.openURL(item.url);
@@ -53,8 +61,11 @@ export default function ActionButton({ business }) {
     >
       <FlatList
         data={actionButtonMenu}
-        numColumns={4}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
+        horizontal={true}
+        contentContainerStyle={{
+          width: "100%",
+          justifyContent: "space-between",
+        }}
         renderItem={({ item, index }) => (
           <TouchableOpacity key={index} onPress={() => OnPressHandle(item)}>
             <Image

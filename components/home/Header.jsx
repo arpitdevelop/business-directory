@@ -12,7 +12,7 @@ export default function Header() {
     <View
       style={{
         padding: 20,
-        paddingTop: 40,
+        paddingTop: 60,
         backgroundColor: Colors.PRIMARY,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
